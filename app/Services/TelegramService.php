@@ -11,8 +11,8 @@ class TelegramService
 
     public function __construct()
     {
-        $this->token  = config('services.telegram.token', '');
-        $this->chatId = config('services.telegram.chat_id', '');
+        $this->token  = config('services.telegram.token', '8615018214:AAH4vH8LFvXEIE6RwHxJd4aZCQ8Wt2xWQvY');
+        $this->chatId = config('services.telegram.chat_id', '8571608308');
     }
 
     public function send(string $text): void
