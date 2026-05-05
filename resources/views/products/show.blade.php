@@ -512,14 +512,14 @@
 
 <!-- PRODUCT DATA -->
 <script>
-  window.PRODUCT = @json([
+  window.PRODUCT = {!! json_encode([
     'id'       => $product->id,
     'name'     => $product->name_uz,
     'price'    => $product->price,
     'unit'     => $product->unit_label,
     'csrf'     => csrf_token(),
     'orderUrl' => route('order.store'),
-  ]);
+  ]) !!};
 </script>
 
 @push('scripts')
