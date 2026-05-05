@@ -222,6 +222,10 @@ nav a:hover { color:var(--white); }
 }
 .color-opt.active { border-color:var(--gold); }
 .color-opt::after { content:''; position:absolute; inset:2px; border:1px solid rgba(255,255,255,0.1); }
+.color-opt {
+  font-size: 0;
+  overflow: hidden;
+}
 .texture-opts { display:flex; gap:8px; flex-wrap:wrap; }
 .texture-opt {
   padding:7px 16px; background:transparent; border:1px solid var(--border);
