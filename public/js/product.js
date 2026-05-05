@@ -414,49 +414,80 @@ async function submitOrder(){
   const errEl   = document.getElementById('orderError');
   const btnText = document.getElementById('orderBtnText');
 
-  const name  = nameEl?.value.trim()  || '';
-  const phone = phoneEl?.value.trim() || '';
-  const qty   = parseInt(qtyInput?.value) || 1;
-  const color   = document.getElementById('colorName')?.textContent  || '';
-  const texture = document.getElementById('textureName')?.textContent || '';
+  const name    = nameEl?.value.trim()  || '';
+  const phone   = phoneEl?.value.trim() || '';
+  const qty     = parseInt(document.getElementById('qtyInput')?.value) || 1;
+  const color   = document.getElementById('colorName')?.textContent.trim()   || '';
+  const texture = document.getElementById('textureName')?.textContent.trim() || '';
 
+  // Validatsiya
   if(!name || !phone){
-    if(errEl){ errEl.textContent='Ism va telefon raqamni to\'ldiring'; errEl.style.display='block'; }
+    if(errEl){ errEl.textContent = 'Ism va telefon raqamni to\'ldiring'; errEl.style.display = 'block'; }
     return;
   }
-  if(!window.PRODUCT){ if(errEl){ errEl.textContent='Xatolik: sahifani yangilang'; errEl.style.display='block'; } return; }
+  if(!window.PRODUCT){
+    if(errEl){ errEl.textContent = 'Xatolik: sahifani yangilang'; errEl.style.display = 'block'; }
+    return;
+  }
 
+  // UI: loading
+  if(errEl) errEl.style.display = 'none';
   if(btn) btn.disabled = true;
   if(btnText) btnText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Yuborilmoqda...';
 
   try {
     const res = await fetch(window.PRODUCT.orderUrl, {
       method: 'POST',
-      headers: {'Content-Type':'application/json','X-CSRF-TOKEN': window.PRODUCT.csrf},
+      headers: {
+        'Content-Type':  'application/json',
+        'Accept':        'application/json',      // ← BU YETISHMAGAN EDI
+        'X-CSRF-TOKEN':  window.PRODUCT.csrf,
+      },
       body: JSON.stringify({ product_id: window.PRODUCT.id, name, phone, qty, color, texture })
     });
+
+    // HTTP xatolarini ushlash (422, 500, ...)
+    if(!res.ok){
+      let msg = 'Xatolik yuz berdi (' + res.status + ')';
+      try {
+        const err = await res.json();
+        // Laravel validatsiya xatosi
+        if(err.errors){
+          msg = Object.values(err.errors).flat().join(', ');
+        } else if(err.message){
+          msg = err.message;
+        }
+      } catch(_){}
+      if(errEl){ errEl.textContent = msg; errEl.style.display = 'block'; }
+      if(btn) btn.disabled = false;
+      if(btnText) btnText.innerHTML = '<i class="fas fa-shopping-cart"></i> Buyurtma berish';
+      return;
+    }
+
     const data = await res.json();
+
     if(data.success){
       const step1 = document.getElementById('orderStep1');
       const step2 = document.getElementById('orderStep2');
       if(step1) step1.style.display = 'none';
       if(step2) step2.style.display = '';
-      const msg = document.getElementById('orderSuccessMsg');
-      const oid = document.getElementById('orderIdDisplay');
-      if(msg) msg.textContent = data.message || (T[currentLang]?.['order.success.msg'] || 'Tez orada aloqaga chiqamiz.');
-      if(oid) oid.textContent = '#' + (data.order_id || '');
+      const msgEl = document.getElementById('orderSuccessMsg');
+      const oidEl = document.getElementById('orderIdDisplay');
+      if(msgEl) msgEl.textContent = data.message || 'Tez orada aloqaga chiqamiz.';
+      if(oidEl) oidEl.textContent = '#' + (data.order_id || '');
     } else {
-      if(errEl){ errEl.textContent = data.message || 'Xatolik yuz berdi'; errEl.style.display='block'; }
+      if(errEl){ errEl.textContent = data.message || 'Xatolik yuz berdi'; errEl.style.display = 'block'; }
       if(btn) btn.disabled = false;
-      if(btnText) btnText.innerHTML = '<i class="fas fa-shopping-cart"></i> ' + (T[currentLang]?.['order.submit'] || 'Buyurtma berish');
+      if(btnText) btnText.innerHTML = '<i class="fas fa-shopping-cart"></i> Buyurtma berish';
     }
-  } catch(e) {
-    if(errEl){ errEl.textContent='Tarmoq xatosi. Qayta urinib ko\'ring.'; errEl.style.display='block'; }
+
+  } catch(e){
+    console.error('Order error:', e);
+    if(errEl){ errEl.textContent = 'Tarmoq xatosi. Qayta urinib ko\'ring.'; errEl.style.display = 'block'; }
     if(btn) btn.disabled = false;
-    if(btnText) btnText.innerHTML = '<i class="fas fa-shopping-cart"></i> ' + (T[currentLang]?.['order.submit'] || 'Buyurtma berish');
+    if(btnText) btnText.innerHTML = '<i class="fas fa-shopping-cart"></i> Buyurtma berish';
   }
 }
-
 // Close modal on backdrop click
 document.addEventListener('click', function(e){
   const modal = document.getElementById('orderModal');
