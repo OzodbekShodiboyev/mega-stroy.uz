@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -n '11,727p' e:/projects/shaxsiy/megastroy/resources/views/welcome.blade.php)",
+      "Bash(sed -n '1138,1474p' e:/projects/shaxsiy/megastroy/resources/views/welcome.blade.php)",
+      "Bash(python -)",
+      "Bash(python3 -)",
+      "Bash(mysql -u root -e \"CREATE DATABASE IF NOT EXISTS megastroy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\")",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\mysql.exe\" -u root -e \"CREATE DATABASE IF NOT EXISTS megastroy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;\" 2>&1)",
+      "Bash(findstr \"admin.settings\\\\|order.store\\\\|product.show\")",
+      "Bash(php -l app/Http/Controllers/Admin/ProductController.php)",
+      "Bash(php -l app/Http/Controllers/Admin/SettingsController.php)",
+      "Bash(php -l app/Models/SiteSetting.php)",
+      "Bash(php -l app/Http/Controllers/ProductController.php)"
+    ],
+    "additionalDirectories": [
+      "e:\\projects\\shaxsiy\\megastroy\\public"
+    ]
+  }
+}

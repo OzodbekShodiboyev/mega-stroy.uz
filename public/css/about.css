@@ -1,0 +1,400 @@
+/* =============================================
+   NAV ACTIVE LINK
+   ============================================= */
+nav a.nav-active { color: var(--gold) !important; }
+nav a.nav-active::after { width: 100% !important; }
+
+/* =============================================
+   ABOUT PAGE HERO
+   ============================================= */
+.about-page-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+  padding: 0 60px 80px;
+}
+.about-page-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.92) 70%),
+    url('https://oltdesign.com/wp-content/uploads/2025/06/BV-V20005-min-scaled.jpg?q=80&w=2070');
+  background-size: cover;
+  background-position: center 30%;
+}
+.about-page-hero-content { position: relative; z-index: 2; max-width: 800px; }
+.about-page-hero-content .section-label { margin-bottom: 20px; }
+.about-page-hero-content h1 {
+  font-family: var(--font-display);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+.about-page-hero-content h1 em { font-style: italic; color: var(--gold); }
+.about-page-hero-content p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(200,200,200,0.75);
+  max-width: 560px;
+}
+
+/* =============================================
+   TIMELINE
+   ============================================= */
+.timeline-section {
+  padding: 120px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.timeline-section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 70px;
+  text-align: center;
+}
+.timeline-section h2 em { font-style: italic; color: var(--gold); }
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  transform: translateX(-50%);
+}
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: start;
+  padding: 40px 0;
+}
+.timeline-item:nth-child(even) .tl-body { grid-column: 3; }
+.timeline-item:nth-child(even) .tl-empty { grid-column: 1; order: -1; }
+.tl-year {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  z-index: 2;
+}
+.tl-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--bg);
+  box-shadow: 0 0 0 1px var(--gold);
+}
+.tl-year-label {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.tl-body {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px 36px;
+  transition: border-color 0.3s;
+}
+.tl-body:hover { border-color: var(--gold); }
+.tl-body h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.tl-body p { font-size: 14px; line-height: 1.8; color: var(--text-dim); }
+.tl-empty { visibility: hidden; }
+
+/* =============================================
+   VALUES GRID
+   ============================================= */
+.values-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 100px 60px;
+}
+.values-inner { max-width: 1400px; margin: 0 auto; }
+.values-header { text-align: center; margin-bottom: 70px; }
+.values-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.values-header h2 em { font-style: italic; color: var(--gold); }
+.values-header p { color: var(--text-dim); font-size: 15px; max-width: 500px; margin: 0 auto; }
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.value-card {
+  background: var(--surface2);
+  padding: 48px 40px;
+  transition: background 0.3s;
+}
+.value-card:hover { background: var(--surface); }
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 22px;
+  margin-bottom: 28px;
+}
+.value-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.value-card p { font-size: 14px; line-height: 1.8; color: var(--text-dim); }
+
+/* =============================================
+   ECO SECTION
+   ============================================= */
+.eco-section {
+  padding: 120px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.eco-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.eco-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 24px;
+  line-height: 1.1;
+}
+.eco-text h2 em { font-style: italic; color: var(--gold); }
+.eco-text > p { font-size: 15px; line-height: 1.9; color: var(--text-dim); margin-bottom: 40px; }
+.eco-list { display: flex; flex-direction: column; gap: 16px; }
+.eco-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s;
+}
+.eco-item:hover { border-color: var(--gold); }
+.eco-item-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.eco-item-text h4 { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 4px; }
+.eco-item-text p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.eco-visual { position: relative; }
+.eco-img-main { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+.eco-badge {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  background: var(--gold);
+  color: var(--black);
+  padding: 20px 24px;
+  text-align: center;
+}
+.eco-badge-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+}
+.eco-badge-txt {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* =============================================
+   VISION SECTION
+   ============================================= */
+.vision-section {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 100px 60px;
+}
+.vision-inner { max-width: 1400px; margin: 0 auto; }
+.vision-header { margin-bottom: 60px; }
+.vision-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.vision-header h2 em { font-style: italic; color: var(--gold); }
+.vision-header p { color: var(--text-dim); font-size: 15px; line-height: 1.8; max-width: 600px; }
+.vision-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.vision-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  transition: border-color 0.3s, transform 0.3s;
+}
+.vision-item:hover { border-color: var(--gold); transform: translateY(-2px); }
+.vision-num {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 40px;
+}
+.vision-item-text h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+.vision-item-text p { font-size: 13px; color: var(--text-dim); line-height: 1.7; }
+
+/* =============================================
+   TEAM QUOTE
+   ============================================= */
+.team-quote-section {
+  padding: 100px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.team-quote-section blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.5vw, 44px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--white);
+  line-height: 1.4;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  position: relative;
+  padding: 0 40px;
+}
+.quote-mark {
+  display: block;
+  font-size: 80px;
+  color: var(--gold);
+  line-height: 1;
+  font-family: var(--font-display);
+  margin-bottom: -20px;
+  font-style: normal;
+}
+.team-quote-section cite {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* =============================================
+   LIGHT MODE — About page
+   ============================================= */
+[data-theme="light"] .about-page-hero-bg {
+  background-image:
+    linear-gradient(to bottom, rgba(247,244,239,0.5) 0%, rgba(247,244,239,0.92) 70%),
+    url('https://oltdesign.com/wp-content/uploads/2025/06/BV-V20005-min-scaled.jpg?q=80&w=2070') !important;
+}
+[data-theme="light"] .about-page-hero-content h1 { color: #1A1510; }
+[data-theme="light"] .about-page-hero-content p { color: #5A504A; }
+[data-theme="light"] .timeline-section h2 { color: #1A1510; }
+[data-theme="light"] .tl-body { background: #FFFFFF; border-color: rgba(160,120,40,0.15); }
+[data-theme="light"] .tl-body h3 { color: #1A1510; }
+[data-theme="light"] .timeline::before { background: linear-gradient(to bottom, transparent, rgba(160,120,40,0.25) 10%, rgba(160,120,40,0.25) 90%, transparent); }
+[data-theme="light"] .tl-dot { border-color: #F7F4EF; }
+[data-theme="light"] .values-section { background: #EDEBE5; border-color: rgba(160,120,40,0.15); }
+[data-theme="light"] .values-grid { background: rgba(160,120,40,0.1); }
+[data-theme="light"] .value-card { background: #F5F2ED; }
+[data-theme="light"] .value-card:hover { background: #FFFFFF; }
+[data-theme="light"] .value-card h3 { color: #1A1510; }
+[data-theme="light"] .values-header h2 { color: #1A1510; }
+[data-theme="light"] .eco-text h2 { color: #1A1510; }
+[data-theme="light"] .eco-text > p { color: #5A504A; }
+[data-theme="light"] .eco-item { border-color: rgba(160,120,40,0.2); }
+[data-theme="light"] .eco-item-text h4 { color: #1A1510; }
+[data-theme="light"] .vision-section { background: #EDEBE5; border-color: rgba(160,120,40,0.15); }
+[data-theme="light"] .vision-header h2 { color: #1A1510; }
+[data-theme="light"] .vision-item { border-color: rgba(160,120,40,0.2); }
+[data-theme="light"] .vision-item-text h4 { color: #1A1510; }
+[data-theme="light"] .team-quote-section blockquote { color: #1A1510; }
+
+/* =============================================
+   RESPONSIVE — About page
+   ============================================= */
+@media(max-width:1100px) {
+  .about-page-hero { padding: 0 30px 60px; }
+  .timeline-section, .eco-section, .team-quote-section { padding-left: 30px; padding-right: 30px; }
+  .values-section, .vision-section { padding-left: 30px; padding-right: 30px; }
+  .eco-grid { gap: 60px; }
+}
+@media(max-width:900px) {
+  .timeline::before { left: 28px; transform: none; }
+  .timeline-item {
+    grid-template-columns: 56px 1fr !important;
+    gap: 0 16px;
+  }
+  .tl-empty { display: none !important; }
+  .tl-year { grid-column: 1 !important; align-items: center; padding-top: 6px; }
+  .tl-body { grid-column: 2 !important; }
+  .tl-year-label { font-size: 11px; }
+  .values-grid { grid-template-columns: 1fr 1fr; }
+  .eco-grid { grid-template-columns: 1fr; }
+  .eco-visual { display: none; }
+  .vision-list { grid-template-columns: 1fr; }
+  .team-quote-section blockquote { padding: 0 20px 0 50px; }
+}
+@media(max-width:600px) {
+  .about-page-hero { min-height: auto; padding: 120px 20px 60px; }
+  .timeline-section, .eco-section, .team-quote-section { padding: 60px 20px; }
+  .values-section, .vision-section { padding: 70px 20px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .value-card { padding: 32px 24px; }
+  .tl-body { padding: 24px 20px; }
+  .tl-body h3 { font-size: 18px; }
+  .vision-item { padding: 20px; }
+  .team-quote-section { padding: 60px 20px; }
+  .team-quote-section blockquote { font-size: clamp(18px, 5vw, 28px); padding: 0 10px 0 40px; }
+}

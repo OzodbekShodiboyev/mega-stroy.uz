@@ -1,0 +1,83 @@
+:root {
+    --gold: #D4AF37;
+    --dark: #0f0f0f;
+    --gray: #222;
+    --white: #ffffff;
+    --text: #444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+html { scroll-behavior: smooth; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.header {
+    background: rgba(0,0,0,0.9); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: var(--white); font-weight: 800; font-size: 22px; letter-spacing: 2px; text-decoration: none; }
+.logo span { color: var(--gold); }
+.nav a { color: var(--white); text-decoration: none; margin-left: 25px; font-size: 14px; text-transform: uppercase; transition: 0.3s; }
+.nav a:hover { color: var(--gold); }
+.phone-btn { background: var(--gold); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: 600; }
+
+/* Slider */
+.swiper { width: 100%; height: 100vh; }
+.swiper-slide { background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+.slide-content h1 { font-size: 4rem; text-transform: uppercase; margin-bottom: 20px; }
+.btn-gold { padding: 15px 35px; background: var(--gold); color: white; text-decoration: none; font-weight: bold; border-radius: 3px; }
+
+/* About */
+.about { padding: 80px 0; background: var(--white); }
+.about-wrapper { display: flex; gap: 50px; align-items: center; }
+.about-img img { width: 100%; border-radius: 8px; }
+.section-title { font-size: 32px; margin-bottom: 20px; color: var(--dark); }
+.section-title.center { text-align: center; margin-bottom: 50px; }
+.features { list-style: none; margin-top: 20px; }
+.features li { margin-bottom: 15px; font-size: 18px; color: var(--text); }
+.features i { color: var(--gold); margin-right: 10px; }
+
+/* Counters */
+.counters { background: var(--dark); padding: 60px 0; color: white; text-align: center; }
+.counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+.count { font-size: 45px; color: var(--gold); margin-bottom: 10px; }
+
+/* Products */
+.products { padding: 80px 0; background: #f9f9f9; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.product-card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: 0.3s; position: relative; }
+.product-card:hover { transform: translateY(-10px); }
+.product-card img { width: 100%; height: 250px; object-fit: cover; }
+.badge { position: absolute; top: 15px; left: 15px; background: red; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; }
+.p-content { padding: 25px; }
+.price { font-size: 22px; font-weight: 800; color: var(--dark); margin: 15px 0; }
+.price span { font-size: 14px; color: #888; }
+.buy-btn { width: 100%; padding: 12px; background: var(--dark); color: white; border: none; cursor: pointer; font-weight: 700; transition: 0.3s; }
+.buy-btn:hover { background: var(--gold); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav { display: none; }
+    .slide-content h1 { font-size: 2.5rem; }
+    .about-wrapper { flex-direction: column; }
+    .counter-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tugmalar uchun zamonaviy stil misoli */
+.btn-premium {
+    padding: 15px 35px;
+    border-radius: 4px; /* Judayam dumaloq emas, zavodga mos jiddiy ko'rinish */
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid #D4AF37; /* Oltinrang yoki to'q ranglar */
+}
+
+.btn-premium:hover {
+    background-color: #D4AF37;
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-2px);
+}
